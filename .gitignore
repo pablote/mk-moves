@@ -1,0 +1,10 @@
+platforms/android/assets
+platforms/android/bin
+platforms/android/gen
+platforms/android/.staging
+platforms/android/ant-build
+platforms/android/ant-gen
+platforms/android/CordovaLib/ant-build
+platforms/android/CordovaLib/ant-gen
+plugins/
+.idea/

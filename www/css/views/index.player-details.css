@@ -1,0 +1,70 @@
+/*
+    Nav
+*/
+nav.navbar-playerDetails .playerName {
+    display: inline
+}
+
+.navbar-playerDetails .navbar-brand,
+.navbar-playerDetails .navbar-nav li a {
+    line-height: 60px;
+    height: 60px;
+    padding-top: 0;
+}
+
+/*
+    Moves list
+*/
+
+div.playerMovesLists div.panel {
+    margin: 10px;
+}
+
+div.playerMovesLists li.list-group-item {
+    min-height: 55px
+}
+
+div.playerMovesLists li.list-group-item span.badge {
+    color: #9C9C9C;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: transparent
+}
+
+/*
+    Loading..
+*/
+
+div#playerDetailsLoading {
+    margin: 10px 0 10px 20px;
+}
+
+div#playerDetailsLoading h5 {
+    display: inline;
+}
+
+/*
+    Buttons
+*/
+[data-button] {
+    display: inline;
+    margin: 0 7px 0 0;
+}
+
+[data-button='p'] {
+    margin: 0 -1px 0 -9px;
+}
+
+@media (max-width: 590px) {
+    div.playerMovesLists li.list-group-item span.badge {
+        display: none !important;
+        visibility: collapse !important;
+    }
+}
+
+@media(min-width: 591px){
+    .buttons-inlined {
+        display: none !important;
+        visibility: collapse !important;
+    }
+}

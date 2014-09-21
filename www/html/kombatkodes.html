@@ -1,0 +1,36 @@
+<div id="pageKombatKodes">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <span class="navbar-brand">
+                Kombat Kodes
+            </span>
+        </div>
+    </nav>
+
+    <div id="kombatkodes" class="list-group" data-bind="foreach: kodes">
+        <a class="list-group-item">
+            <span class="badge">
+                <span data-bind="text: leftCode"></span> - <span data-bind="text: rightCode"></span>
+            </span>
+
+            <h5 class="list-group-item-heading" data-bind="text: name"></h5>
+
+            <p class="list-group-item-text" data-bind="html: description">
+            </p>
+        </a>
+    </div>
+
+    <nav class="navbar navbar-default" role="navigation" data-bind="click: backToMain">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0)" class="navbar-brand">
+                    Go back to Player Select
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<script>
+    ko.applyBindings(new KombatKodesViewModel(), document.getElementById("pageKombatKodes"));
+</script>

@@ -1,0 +1,20 @@
+/*
+    Nav
+*/
+.navbar-playerBio .playerName {
+    display: inline
+}
+
+.navbar-playerBio .navbar-brand,
+.navbar-playerBio .navbar-nav li a {
+    line-height: 60px;
+    height: 60px;
+    padding-top: 0;
+}
+
+/*
+Body
+*/
+#playerBio {
+    padding: 10px;
+}

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ps.mkmoves" version="1.22.0" xmlns="http://www.w3.org/ns/widgets">
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <name>MK Moves</name>
+    <description>
+        Mortal Kombat 2011/2013 moves guide
+    </description>
+    <author email="pablocompagni@gmail.com" href="http://cordova.io">
+        Pablo Compagni
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>

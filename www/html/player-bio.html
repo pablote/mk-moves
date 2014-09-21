@@ -1,0 +1,23 @@
+<div id="pagePlayerBio">
+    <nav class="navbar navbar-default navbar-playerBio" role="navigation">
+        <div class="navbar-header">
+            <span class="navbar-brand">
+                <img data-bind="attr: { src: character.smallImg}" height="50" width="50">
+                <h4 class="playerName" data-bind="text: character.name"></h4>
+            </span>
+        </div>
+    </nav>
+
+    <h4 id="playerBio" data-bind="text: character.bio">
+    </h4>
+
+    <nav class="navbar navbar-default" role="navigation" data-bind="click: backToDetails">
+        <div class="navbar-header">
+            <span class="navbar-brand">Go back to Player moves</span>
+        </div>
+    </nav>
+</div>
+
+<script>
+    ko.applyBindings(new PlayerBioViewModel(), document.getElementById("pagePlayerBio"));
+</script>

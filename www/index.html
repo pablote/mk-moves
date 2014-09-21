@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+
+        <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/views/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/views/index.player-list.css" />
+        <link rel="stylesheet" type="text/css" href="css/views/index.player-details.css" />
+        <link rel="stylesheet" type="text/css" href="css/views/index.player-bio.css" />
+        <link rel="stylesheet" type="text/css" href="css/views/index.kombatkodes.css" />
+        <title>MK Moves</title>
+    </head>
+    <body>
+        <div id="content">
+        </div>
+
+        <script src="cordova.js"></script>
+        <script src="js/lib/jquery.js"></script>
+        <script src="js/lib/bootstrap.js"></script>
+        <script src="js/lib/underscore.js"></script>
+        <script src="js/lib/sammy.js"></script>
+        <script src="js/lib/knockout.js"></script>
+        <script src="js/data.js"></script>
+        <script src="js/services/DataFixer.js"></script>
+        <script src="js/services/DataService.js"></script>
+        <script src="js/services/UserSettings.js"></script>
+        <script src="js/viewModels/PlayerListViewModel.js"></script>
+        <script src="js/viewModels/PlayerDetailsViewModel.js"></script>
+        <script src="js/viewModels/MoveViewModel.js"></script>
+        <script src="js/viewModels/ButtonViewModel.js"></script>
+        <script src="js/viewModels/KombatKodesViewModel.js"></script>
+        <script src="js/viewModels/PlayerBioViewModel.js"></script>
+        <script>
+            var app = Sammy('#content', function() {
+                this.get('#/player-list', function() {
+                    this.load('html/player-list.html').swap();
+                });
+
+                this.get('#/player-grid', function() {
+                    this.load('html/player-grid.html').swap();
+                });
+
+                this.get('#/player-details/:playerId', function() {
+                    window.routeParams = window.routeParams || {};
+                    window.routeParams.playerId = this.params['playerId'];
+
+                    this.load('html/player-details.html').swap();
+                });
+
+                this.get('#/kombatkodes', function() {
+                    this.load('html/kombatkodes.html').swap();
+                });
+
+                this.get('#/player-bio/:playerId', function() {
+                    window.routeParams = window.routeParams || {};
+                    window.routeParams.playerId = this.params['playerId'];
+
+                    this.load('html/player-bio.html').swap();
+                });
+
+                this.notFound = function() {
+                    this.setLocation("#/player-list");
+                }
+            });
+
+            $(document).ready(function() {
+                app.run('#/player-list');
+            });
+        </script>
+    </body>
+</html>
+

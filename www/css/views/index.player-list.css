@@ -1,0 +1,16 @@
+div.playerList .playerName {
+    margin: 10px 15px 10px 15px;
+}
+
+div.playerList ul{
+  margin: 10px;
+}
+
+ul li img.playerImg{
+    vertical-align: middle
+}
+
+ul li .playerName{
+    display: inline;
+    margin-left: 10px
+}
