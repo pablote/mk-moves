@@ -8,3 +8,4 @@ platforms/android/CordovaLib/ant-build
 platforms/android/CordovaLib/ant-gen
 plugins/
 .idea/
+res/keys
