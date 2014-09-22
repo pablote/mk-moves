@@ -16,13 +16,11 @@ nav.navbar-playerDetails .playerName {
     Moves list
 */
 
-div.playerMovesLists div.panel {
-    margin: 10px;
-}
-
+/*
 div.playerMovesLists li.list-group-item {
     min-height: 55px
 }
+*/
 
 div.playerMovesLists li.list-group-item span.badge {
     color: #9C9C9C;
