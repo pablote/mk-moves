@@ -5,6 +5,7 @@ var PlayerDetailsViewModel = (function () {
         this.playerId = window.routeParams.playerId;
         this.isLoading = ko.observable(false);
         this.moves = ko.observableArray();
+        this.players = [];
         this.isXbox = ko.observable(true);
         this.isLeft = ko.observable(true);
 
@@ -30,6 +31,7 @@ var PlayerDetailsViewModel = (function () {
         var self = this;
         self.isLoading(true);
         self.moves([]);
+        self.players = [];
 
         var userSettings = new UserSettings();
         var dataService = new DataService();
@@ -37,6 +39,10 @@ var PlayerDetailsViewModel = (function () {
         userSettings.getConfig(function (settings) {
             self.isXbox(settings.isXbox);
             self.isLeft(settings.isLeft);
+
+            dataService.getAllPlayers(function (getAllPlayerResponse) {
+                self.players = getAllPlayerResponse;
+            });
 
             dataService.getPlayerMoves(self.playerId, function (getPlayerResponse) {
                 setTimeout(function () {
