@@ -13,6 +13,18 @@ nav.navbar-playerDetails .playerName {
 }
 
 /*
+    Player list
+*/
+
+.playerList .playerImg {
+    display: inline;
+}
+
+.playerList .playerName {
+    display: inline;
+}
+
+/*
     Moves list
 */
 
