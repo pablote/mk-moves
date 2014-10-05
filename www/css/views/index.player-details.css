@@ -45,12 +45,8 @@ div.playerMovesLists li.list-group-item span.badge {
     Loading..
 */
 
-div#playerDetailsLoading {
-    margin: 10px 0 10px 20px;
-}
-
-div#playerDetailsLoading h5 {
-    display: inline;
+.player-details-loading {
+    margin-bottom: 10px;
 }
 
 /*
