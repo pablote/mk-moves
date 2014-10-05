@@ -1,0 +1,17 @@
+.no-padding {
+    padding: 0 !important;
+}
+
+.height-all {
+    height: 100%;
+}
+
+.vertical-scroll {
+    overflow-y: scroll;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

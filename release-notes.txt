@@ -1,0 +1,7 @@
+Version Next
++ Show player list on the details page, when there's enough space.
+
+Version 1.23.0
++ Created new git repo based on the previous mercurial repo. Uploaded to Github.
+* Apache Cordova updated from version 3.5.0 to 3.5.1
+

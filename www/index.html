@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html class="height-all">
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -15,8 +15,8 @@
         <link rel="stylesheet" type="text/css" href="css/views/index.kombatkodes.css" />
         <title>MK Moves</title>
     </head>
-    <body>
-        <div id="content">
+    <body class="height-all">
+        <div id="content" class="height-all">
         </div>
 
         <script src="cordova.js"></script>
@@ -29,12 +29,14 @@
         <script src="js/services/DataFixer.js"></script>
         <script src="js/services/DataService.js"></script>
         <script src="js/services/UserSettings.js"></script>
+        <script src="js/bindings/ElementBinding.js"></script>
         <script src="js/viewModels/PlayerListViewModel.js"></script>
         <script src="js/viewModels/PlayerDetailsViewModel.js"></script>
         <script src="js/viewModels/MoveViewModel.js"></script>
         <script src="js/viewModels/ButtonViewModel.js"></script>
         <script src="js/viewModels/KombatKodesViewModel.js"></script>
         <script src="js/viewModels/PlayerBioViewModel.js"></script>
+        <script src="js/viewModels/PlayerViewModel.js"></script>
         <script>
             var app = Sammy('#content', function() {
                 this.get('#/player-list', function() {

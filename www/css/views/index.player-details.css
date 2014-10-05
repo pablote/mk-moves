@@ -13,16 +13,26 @@ nav.navbar-playerDetails .playerName {
 }
 
 /*
+    Player list
+*/
+
+.player-list .player-img {
+    display: inline;
+}
+
+.player-list .player-name {
+    display: inline;
+}
+
+/*
     Moves list
 */
 
-div.playerMovesLists div.panel {
-    margin: 10px;
-}
-
+/*
 div.playerMovesLists li.list-group-item {
     min-height: 55px
 }
+*/
 
 div.playerMovesLists li.list-group-item span.badge {
     color: #9C9C9C;
@@ -35,12 +45,8 @@ div.playerMovesLists li.list-group-item span.badge {
     Loading..
 */
 
-div#playerDetailsLoading {
-    margin: 10px 0 10px 20px;
-}
-
-div#playerDetailsLoading h5 {
-    display: inline;
+.player-details-loading {
+    margin-bottom: 10px;
 }
 
 /*
