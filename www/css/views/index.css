@@ -15,3 +15,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.fast-transition {
+    -webkit-transition: height 0.05s;
+    -moz-transition: height 0.05s;
+    -ms-transition: height 0.05s;
+    -o-transition: height 0.05s;
+    transition: height 0.05s;
+}
