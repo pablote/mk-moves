@@ -62,6 +62,12 @@ var PlayerDetailsViewModel = (function () {
         });
     };
 
+    PlayerDetailsViewModel.prototype.init = function () {
+        var self = this;
+        var selectedPlayer = _.findWhere(self.players, { selected: true });
+        selectedPlayer.$element().scrollIntoView(true);
+    };
+
     PlayerDetailsViewModel.prototype.goBackToMain = function () {
         window.location = '#/player-list';
     };

@@ -5,6 +5,7 @@ var PlayerViewModel = (function () {
         this.name = player.name;
         this.smallImg = player.smallImg;
         this.selected = selected || false;
+        this.$element = ko.observable();
     };
 
     return PlayerViewModel;

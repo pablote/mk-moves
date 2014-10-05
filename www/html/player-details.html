@@ -3,7 +3,7 @@
     <div class="row height-all">
         <div class="hidden-xs col-sm-3 no-padding height-all vertical-scroll">
             <div class="list-group height-all player-list" data-bind="foreach: players">
-                <a class="list-group-item text-overflow" data-bind="click: $parent.selectPlayer, css: { active: selected }">
+                <a class="list-group-item text-overflow" data-bind="click: $parent.selectPlayer, css: { active: selected }, element: $element">
                     <img class="player-img img-thumbnail" data-bind="attr: { src: smallImg }" height="55" width="55" />
                     <h5 class="player-name text-overflow" data-bind="text: name"></h5>
                 </a>
@@ -88,5 +88,7 @@
 </div>
 
 <script>
-    ko.applyBindings(new PlayerDetailsViewModel(), document.getElementById("pagePlayerDetails"));
+    var viewModel = new PlayerDetailsViewModel();
+    ko.applyBindings(viewModel, document.getElementById("pagePlayerDetails"));
+    viewModel.init();
 </script>
