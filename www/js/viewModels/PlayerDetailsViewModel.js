@@ -5,14 +5,16 @@ var PlayerDetailsViewModel = (function () {
         this.playerId = parseInt(window.routeParams.playerId, 10);
         this.isLoading = ko.observable(false);
         this.moves = ko.observableArray();
-        this.players = [];
+        this.players = ko.observableArray();
         this.isXbox = ko.observable(true);
         this.isLeft = ko.observable(true);
-
-        this.refreshUI();
+        this.character = {
+            name: ko.observable(''),
+            smallImg: ko.observable('')
+        };
     };
 
-    function createItemGroupViewModel(itemGroup, settings) {
+    function createItemGroupViewModel(self, itemGroup, settings) {
         var itemGroupViewModel = {
             name: itemGroup.name,
             items: []
@@ -27,15 +29,34 @@ var PlayerDetailsViewModel = (function () {
         return itemGroupViewModel;
     }
 
-    PlayerDetailsViewModel.prototype.refreshUI = function () {
+    function togglePosition(self, settings) {
+        var userSettings = new UserSettings();
+
+        settings.isLeft = !settings.isLeft;
+        userSettings.setConfig(settings, function () {
+            self.init();
+        });
+    }
+
+    function toggleButtons(self, settings) {
+        var userSettings = new UserSettings();
+
+        settings.isXbox = !settings.isXbox;
+        userSettings.setConfig(settings, function () {
+            self.init();
+        });
+    }
+
+    PlayerDetailsViewModel.prototype.init = function () {
         var self = this;
         self.isLoading(true);
         self.moves([]);
-        self.players = [];
+        self.players([]);
 
         var userSettings = new UserSettings();
         var dataService = new DataService();
 
+        // load data
         userSettings.getConfig(function (settings) {
             self.isXbox(settings.isXbox);
             self.isLeft(settings.isLeft);
@@ -50,21 +71,21 @@ var PlayerDetailsViewModel = (function () {
             dataService.getPlayerMoves(self.playerId, function (getPlayerResponse) {
                 setTimeout(function () {
                     _.each(getPlayerResponse.itemGroups, function (itemGroup) {
-                        self.moves.push(createItemGroupViewModel(itemGroup, settings));
+                        self.moves.push(createItemGroupViewModel(self, itemGroup, settings));
                     });
                     self.isLoading(false);
                 }, 20);
             });
 
             dataService.getPlayer(self.playerId, function (character) {
-                self.character = character;
+                self.character.name(character.name);
+                self.character.smallImg(character.smallImg);
             });
         });
-    };
 
-    PlayerDetailsViewModel.prototype.init = function () {
-        var self = this;
-        var selectedPlayer = _.findWhere(self.players, { selected: true });
+
+        // scroll to selected player
+        var selectedPlayer = _.findWhere(self.players(), { selected: true });
         selectedPlayer.$element().scrollIntoView(true);
     };
 
@@ -85,7 +106,7 @@ var PlayerDetailsViewModel = (function () {
                 return;
             }
 
-            self.togglePosition(settings);
+            togglePosition(self, settings);
         });
     };
 
@@ -98,7 +119,7 @@ var PlayerDetailsViewModel = (function () {
                 return;
             }
 
-            self.togglePosition(settings);
+            togglePosition(self, settings);
         });
     };
 
@@ -111,7 +132,7 @@ var PlayerDetailsViewModel = (function () {
                 return;
             }
 
-            self.toggleButtons(settings);
+            toggleButtons(self, settings);
         });
     };
 
@@ -124,7 +145,7 @@ var PlayerDetailsViewModel = (function () {
                 return;
             }
 
-            self.toggleButtons(settings);
+            toggleButtons(self, settings);
         });
     };
 
@@ -132,26 +153,6 @@ var PlayerDetailsViewModel = (function () {
         var playerId = player.id;
 
         window.location = '#/player-details/' + playerId;
-    };
-
-    PlayerDetailsViewModel.prototype.togglePosition = function (settings) {
-        var self = this,
-            userSettings = new UserSettings();
-
-        settings.isLeft = !settings.isLeft;
-        userSettings.setConfig(settings, function () {
-            self.refreshUI();
-        });
-    };
-
-    PlayerDetailsViewModel.prototype.toggleButtons = function (settings) {
-        var self = this,
-            userSettings = new UserSettings();
-
-        settings.isXbox = !settings.isXbox;
-        userSettings.setConfig(settings, function () {
-            self.refreshUI();
-        });
     };
 
     return PlayerDetailsViewModel;
