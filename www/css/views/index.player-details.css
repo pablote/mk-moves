@@ -16,11 +16,11 @@ nav.navbar-playerDetails .playerName {
     Player list
 */
 
-.playerList .playerImg {
+.player-list .player-img {
     display: inline;
 }
 
-.playerList .playerName {
+.player-list .player-name {
     display: inline;
 }
 

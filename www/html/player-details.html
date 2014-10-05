@@ -1,11 +1,11 @@
 <div id="pagePlayerDetails" class="container-fluid height-all">
 
     <div class="row height-all">
-        <div class="col-sm-3 hidden-xs no-padding height-all vertical-scroll">
-            <div class="list-group height-all playerList" data-bind="foreach: players">
-                <a class="list-group-item"> <!--TODO: data-bind="click: $parent.goToPlayerSelect"-->
-                    <img class="playerImg img-thumbnail" data-bind="attr: { src: smallImg }" height="55" width="55" />
-                    <h5 class="playerName" data-bind="text: name"></h5>
+        <div class="hidden-xs col-sm-3 no-padding height-all vertical-scroll">
+            <div class="list-group height-all player-list" data-bind="foreach: players">
+                <a class="list-group-item text-overflow"> <!--TODO: data-bind="click: $parent.goToPlayerSelect"-->
+                    <img class="player-img img-thumbnail" data-bind="attr: { src: smallImg }" height="55" width="55" />
+                    <h5 class="player-name text-overflow" data-bind="text: name"></h5>
                 </a>
             </div>
         </div>

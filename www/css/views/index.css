@@ -9,3 +9,9 @@
 .vertical-scroll {
     overflow-y: scroll;
 }
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
