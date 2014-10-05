@@ -1,8 +1,8 @@
-/*globals window, setTimeout, ko, _, UserSettings, DataService, MoveViewModel */
+/*globals window, setTimeout, ko, _, UserSettings, DataService, MoveViewModel, PlayerViewModel */
 var PlayerDetailsViewModel = (function () {
     'use strict';
     var PlayerDetailsViewModel = function () {
-        this.playerId = window.routeParams.playerId;
+        this.playerId = parseInt(window.routeParams.playerId, 10);
         this.isLoading = ko.observable(false);
         this.moves = ko.observableArray();
         this.players = [];
@@ -41,7 +41,10 @@ var PlayerDetailsViewModel = (function () {
             self.isLeft(settings.isLeft);
 
             dataService.getAllPlayers(function (getAllPlayerResponse) {
-                self.players = getAllPlayerResponse;
+                _.each(getAllPlayerResponse, function (player) {
+                    var selected = player.id === self.playerId;
+                    self.players.push(new PlayerViewModel(player, selected));
+                });
             });
 
             dataService.getPlayerMoves(self.playerId, function (getPlayerResponse) {
@@ -117,6 +120,12 @@ var PlayerDetailsViewModel = (function () {
 
             self.toggleButtons(settings);
         });
+    };
+
+    PlayerDetailsViewModel.prototype.selectPlayer = function (player) {
+        var playerId = player.id;
+
+        window.location = '#/player-details/' + playerId;
     };
 
     PlayerDetailsViewModel.prototype.togglePosition = function (settings) {
