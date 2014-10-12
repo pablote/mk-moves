@@ -29,21 +29,20 @@ var PlayerDetailsViewModel = (function () {
         return itemGroupViewModel;
     }
 
-    function togglePosition(self, settings) {
+    function updateButtons(self, settings) {
         var userSettings = new UserSettings();
 
-        settings.isLeft = !settings.isLeft;
         userSettings.setConfig(settings, function () {
-            self.init();
-        });
-    }
+            self.isXbox(settings.isXbox);
+            self.isLeft(settings.isLeft);
 
-    function toggleButtons(self, settings) {
-        var userSettings = new UserSettings();
-
-        settings.isXbox = !settings.isXbox;
-        userSettings.setConfig(settings, function () {
-            self.init();
+            _.each(self.moves(), function (itemGroup) {
+                _.each(itemGroup.items, function (item) {
+                    _.each(item.buttons(), function (button) {
+                        button.setCode(button.code(), settings);
+                    });
+                });
+            });
         });
     }
 
@@ -102,11 +101,8 @@ var PlayerDetailsViewModel = (function () {
             userSettings = new UserSettings();
 
         userSettings.getConfig(function (settings) {
-            if (settings.isLeft) {
-                return;
-            }
-
-            togglePosition(self, settings);
+            settings.isLeft = true;
+            updateButtons(self, settings);
         });
     };
 
@@ -115,11 +111,8 @@ var PlayerDetailsViewModel = (function () {
             userSettings = new UserSettings();
 
         userSettings.getConfig(function (settings) {
-            if (!settings.isLeft) {
-                return;
-            }
-
-            togglePosition(self, settings);
+            settings.isLeft = false;
+            updateButtons(self, settings);
         });
     };
 
@@ -128,11 +121,8 @@ var PlayerDetailsViewModel = (function () {
             userSettings = new UserSettings();
 
         userSettings.getConfig(function (settings) {
-            if (settings.isXbox) {
-                return;
-            }
-
-            toggleButtons(self, settings);
+            settings.isXbox = true;
+            updateButtons(self, settings);
         });
     };
 
@@ -141,11 +131,8 @@ var PlayerDetailsViewModel = (function () {
             userSettings = new UserSettings();
 
         userSettings.getConfig(function (settings) {
-            if (!settings.isXbox) {
-                return;
-            }
-
-            toggleButtons(self, settings);
+            settings.isXbox = false;
+            updateButtons(self, settings);
         });
     };
 

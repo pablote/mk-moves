@@ -8,13 +8,17 @@ var ButtonViewModel = (function () {
         this.imageHeight = ko.observable(0);
         this.text = ko.observable('');
 
+        this.setCode(code, settings);
+    };
+
+    ButtonViewModel.prototype.setCode = function (code, settings) {
+        var baseUrl;
+
         if (!settings.isLeft && code === 'b') {
             code = 'f';
         } else if (!settings.isLeft && code === 'f') {
             code = 'b';
         }
-
-        var baseUrl;
 
         if (code.length === 1) {
             switch (code) {
@@ -55,7 +59,6 @@ var ButtonViewModel = (function () {
         } else {
             this.text(code);
         }
-
     };
 
     return ButtonViewModel;
