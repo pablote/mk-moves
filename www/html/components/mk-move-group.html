@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title" data-bind="text: name"></h4>
+    </div>
+
+    <ul class="list-group" data-bind="foreach: { data: moves, as: 'move' }">
+        <mk-move params="viewModel: move"></mk-move>
+    </ul>
+</div>

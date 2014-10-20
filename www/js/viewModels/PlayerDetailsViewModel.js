@@ -21,9 +21,9 @@ var PlayerDetailsViewModel = (function () {
             self.isXbox(settings.isXbox);
             self.isLeft(settings.isLeft);
 
-            _.each(self.moveGroups(), function (itemGroup) {
-                _.each(itemGroup.items, function (item) {
-                    _.each(item.buttons(), function (button) {
+            _.each(self.moveGroups(), function (group) {
+                _.each(group.moves, function (move) {
+                    _.each(move.buttons(), function (button) {
                         button.setCode(button.code(), settings);
                     });
                 });
