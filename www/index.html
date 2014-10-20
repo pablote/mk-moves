@@ -42,29 +42,29 @@
         <script>
             var app = Sammy('#content', function() {
                 this.get('#/player-list', function() {
-                    this.load('html/player-list.html').swap();
+                    this.load('html/views/player-list.html').swap();
                 });
 
                 this.get('#/player-grid', function() {
-                    this.load('html/player-grid.html').swap();
+                    this.load('html/views/player-grid.html').swap();
                 });
 
                 this.get('#/player-details/:playerId', function() {
                     window.routeParams = window.routeParams || {};
                     window.routeParams.playerId = this.params['playerId'];
 
-                    this.load('html/player-details.html').swap();
+                    this.load('html/views/player-details.html').swap();
                 });
 
                 this.get('#/kombatkodes', function() {
-                    this.load('html/kombatkodes.html').swap();
+                    this.load('html/views/kombatkodes.html').swap();
                 });
 
                 this.get('#/player-bio/:playerId', function() {
                     window.routeParams = window.routeParams || {};
                     window.routeParams.playerId = this.params['playerId'];
 
-                    this.load('html/player-bio.html').swap();
+                    this.load('html/views/player-bio.html').swap();
                 });
 
                 this.notFound = function() {
