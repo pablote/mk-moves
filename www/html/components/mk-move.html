@@ -1,7 +1,6 @@
 <li class="list-group-item">
-    <span class="badge" data-bind="foreach: buttons">
-        <span data-bind="visible: text, text: text"></span>
-        <img data-bind="visible: imageSrc, attr: { src: imageSrc, 'data-button': code, height: imageHeight, width: imageWidth }">
+    <span class="badge" data-bind="foreach: { data: buttons, as: 'button' }">
+        <mk-button params="viewModel: button"></mk-button>
     </span>
 
     <h5 class="list-group-item-heading" data-bind="text: name">
@@ -16,8 +15,7 @@
     <p class="list-group-item-text" data-bind="visible: position, text: formattedPosition">
     </p>
 
-    <div class="buttons-inlined" data-bind="foreach: buttons">
-        <span data-bind="visible: text, text: text"></span>
-        <img data-bind="visible: imageSrc, attr: { src: imageSrc, 'data-button': code, height: imageHeight, width: imageWidth }">
+    <div class="buttons-inlined" data-bind="foreach: { data: buttons, as: 'button' }">
+        <mk-button params="viewModel: button"></mk-button>
     </div>
 </li>
