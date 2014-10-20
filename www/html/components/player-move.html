@@ -1,0 +1,23 @@
+<li class="list-group-item">
+    <span class="badge" data-bind="foreach: buttons">
+        <span data-bind="visible: text, text: text"></span>
+        <img data-bind="visible: imageSrc, attr: { src: imageSrc, 'data-button': code, height: imageHeight, width: imageWidth }">
+    </span>
+
+    <h5 class="list-group-item-heading" data-bind="text: name">
+    </h5>
+
+    <p class="list-group-item-text" data-bind="visible: damage, text: formattedDamage">
+    </p>
+
+    <p class="list-group-item-text" data-bind="visible: hits, text: formattedHits">
+    </p>
+
+    <p class="list-group-item-text" data-bind="visible: position, text: formattedPosition">
+    </p>
+
+    <div class="buttons-inlined" data-bind="foreach: buttons">
+        <span data-bind="visible: text, text: text"></span>
+        <img data-bind="visible: imageSrc, attr: { src: imageSrc, 'data-button': code, height: imageHeight, width: imageWidth }">
+    </div>
+</li>
