@@ -38,15 +38,15 @@
                 </div>
             </nav>
 
-            <div class="playerMovesLists" data-bind="foreach: moves">
+            <div class="playerMovesLists" data-bind="foreach: moveGroups">
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title" data-bind="text: name"></h4>
                     </div>
 
-                    <ul class="list-group" data-bind="foreach: { data: items, as: 'item' }">
-                        <player-move params="viewModel: item"></player-move>
+                    <ul class="list-group" data-bind="foreach: { data: moves, as: 'move' }">
+                        <player-move params="viewModel: move"></player-move>
                     </ul>
                 </div>
             </div>

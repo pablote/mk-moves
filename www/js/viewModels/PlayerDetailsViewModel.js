@@ -1,10 +1,10 @@
-/*globals window, setTimeout, ko, _, UserSettings, DataService, MoveViewModel, PlayerViewModel */
+/*globals window, setTimeout, ko, _, UserSettings, DataService, MoveViewModel, MoveGroupViewModel, PlayerViewModel */
 var PlayerDetailsViewModel = (function () {
     'use strict';
     var PlayerDetailsViewModel = function () {
         this.playerId = parseInt(window.routeParams.playerId, 10);
         this.isLoading = ko.observable(false);
-        this.moves = ko.observableArray();
+        this.moveGroups = ko.observableArray();
         this.players = ko.observableArray();
         this.isXbox = ko.observable(true);
         this.isLeft = ko.observable(true);
@@ -14,21 +14,6 @@ var PlayerDetailsViewModel = (function () {
         };
     };
 
-    function createItemGroupViewModel(self, itemGroup, settings) {
-        var itemGroupViewModel = {
-            name: itemGroup.name,
-            items: []
-        };
-
-        _.each(itemGroup.items, function (item) {
-            var moveViewModel = new MoveViewModel(item, settings);
-
-            itemGroupViewModel.items.push(moveViewModel);
-        });
-
-        return itemGroupViewModel;
-    }
-
     function updateButtons(self, settings) {
         var userSettings = new UserSettings();
 
@@ -36,7 +21,7 @@ var PlayerDetailsViewModel = (function () {
             self.isXbox(settings.isXbox);
             self.isLeft(settings.isLeft);
 
-            _.each(self.moves(), function (itemGroup) {
+            _.each(self.moveGroups(), function (itemGroup) {
                 _.each(itemGroup.items, function (item) {
                     _.each(item.buttons(), function (button) {
                         button.setCode(button.code(), settings);
@@ -49,7 +34,7 @@ var PlayerDetailsViewModel = (function () {
     PlayerDetailsViewModel.prototype.init = function () {
         var self = this;
         self.isLoading(true);
-        self.moves([]);
+        self.moveGroups([]);
         self.players([]);
 
         var userSettings = new UserSettings();
@@ -70,7 +55,7 @@ var PlayerDetailsViewModel = (function () {
             dataService.getPlayerMoves(self.playerId, function (getPlayerResponse) {
                 setTimeout(function () {
                     _.each(getPlayerResponse.itemGroups, function (itemGroup) {
-                        self.moves.push(createItemGroupViewModel(self, itemGroup, settings));
+                        self.moveGroups.push(new MoveGroupViewModel(itemGroup, settings));
                     });
                     self.isLoading(false);
                 }, 20);
