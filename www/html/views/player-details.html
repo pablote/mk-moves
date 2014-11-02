@@ -1,7 +1,7 @@
 <div id="pagePlayerDetails" class="container-fluid height-all">
 
     <div class="row height-all">
-        <div class="hidden-xs col-sm-3 no-padding height-all vertical-scroll">
+        <div class="hidden-xs col-sm-3 col-no-padding height-all vertical-scroll">
             <div class="list-group height-all player-list" data-bind="foreach: players">
                 <a class="list-group-item text-overflow" data-bind="click: $parent.selectPlayer, css: { active: selected }, element: $element">
                     <img class="player-img img-thumbnail" data-bind="attr: { src: smallImg }" height="55" width="55" />
@@ -10,8 +10,8 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-9 height-all vertical-scroll">
-            <nav class="navbar navbar-default navbar-playerDetails" role="navigation">
+        <div class="col-xs-12 col-sm-9 col-small-padding height-all vertical-scroll">
+            <nav class="navbar navbar-default navbar-player-details" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-var-content">
                         <span class="sr-only">Toggle navigation</span>

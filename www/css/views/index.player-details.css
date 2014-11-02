@@ -1,12 +1,17 @@
 /*
     Nav
 */
-nav.navbar-playerDetails .playerName {
+.navbar-player-details {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.navbar-player-details .playerName {
     display: inline
 }
 
-.navbar-playerDetails .navbar-brand,
-.navbar-playerDetails .navbar-nav li a {
+.navbar-player-details .navbar-brand,
+.navbar-player-details .navbar-nav li a {
     line-height: 60px;
     height: 60px;
     padding-top: 0;
@@ -15,7 +20,6 @@ nav.navbar-playerDetails .playerName {
 /*
     Player list
 */
-
 .player-list .player-img {
     display: inline;
 }
@@ -27,13 +31,6 @@ nav.navbar-playerDetails .playerName {
 /*
     Moves list
 */
-
-/*
-div.playerMovesLists li.list-group-item {
-    min-height: 55px
-}
-*/
-
 div.playerMovesLists li.list-group-item span.badge {
     color: #9C9C9C;
     font-size: 18px;
