@@ -1,10 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ps.mkmoves" version="1.24.0" xmlns="http://www.w3.org/ns/widgets">
     <preference name="loglevel" value="DEBUG" />
-    <preference name="AndroidLaunchMode" value="singleTop" />
-    <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
     <name>MK Moves</name>
     <description>
         Mortal Kombat 9 moves guide
